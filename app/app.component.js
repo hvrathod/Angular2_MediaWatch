@@ -30,6 +30,8 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                         isFavorite: false
                     };
                 }
+                AppComponent.prototype.onMediaItemDelete = function (mediaItem) {
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'mw-app',
