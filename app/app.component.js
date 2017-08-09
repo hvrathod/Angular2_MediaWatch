@@ -24,7 +24,8 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'mw-app',
-                        templateUrl: 'app/app.component.html'
+                        templateUrl: 'app/app.component.html',
+                        styles: ["\n    \th1 { color: #ffffff; }\n        .description {\n            font-style : italic;\n            color: green;\n        }\n    "]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
