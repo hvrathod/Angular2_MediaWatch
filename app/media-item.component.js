@@ -11,28 +11,28 @@ System.register(['@angular/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var AppComponent;
+    var MediaItemComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent() {
+            MediaItemComponent = (function () {
+                function MediaItemComponent() {
                 }
-                AppComponent = __decorate([
+                MediaItemComponent = __decorate([
                     core_1.Component({
-                        selector: 'mw-app',
-                        templateUrl: 'app/app.component.html',
-                        styleUrls: ['app/app.component.css']
+                        selector: 'mw-media-item',
+                        templateUrl: 'app/media-item.component.html',
+                        styleUrls: ['app/media-item.component.css']
                     }), 
                     __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
+                ], MediaItemComponent);
+                return MediaItemComponent;
             }());
-            exports_1("AppComponent", AppComponent);
+            exports_1("MediaItemComponent", MediaItemComponent);
         }
     }
 });
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=media-item.component.js.map
