@@ -29,7 +29,10 @@ System.register(['@angular/core', '@angular/forms'], function(exports_1, context
                     //Add 'implements OnInit' to the class.
                     this.form = new forms_1.FormGroup({
                         medium: new forms_1.FormControl('Movies'),
-                        name: new forms_1.FormControl('', forms_1.Validators.pattern('[\\w\\-\\s\\/]+')),
+                        name: new forms_1.FormControl('', forms_1.Validators.compose([
+                            forms_1.Validators.required,
+                            forms_1.Validators.pattern('[\\w\\-\\s\\/]+')
+                        ])),
                         category: new forms_1.FormControl(''),
                         year: new forms_1.FormControl(''),
                     });
