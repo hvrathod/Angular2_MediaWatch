@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', './app.component', './media-item.component', './media-item-list.component', './media-item-form.component', './media-item.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', './app.component', './media-item.component', './media-item-list.component', './media-item-form.component', './media-item.service', './app.routing'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, forms_1, app_component_1, media_item_component_1, media_item_list_component_1, media_item_form_component_1, media_item_service_1;
+    var core_1, platform_browser_1, forms_1, app_component_1, media_item_component_1, media_item_list_component_1, media_item_form_component_1, media_item_service_1, app_routing_1;
     var lookupLists, AppModule;
     return {
         setters:[
@@ -37,6 +37,9 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
             },
             function (media_item_service_1_1) {
                 media_item_service_1 = media_item_service_1_1;
+            },
+            function (app_routing_1_1) {
+                app_routing_1 = app_routing_1_1;
             }],
         execute: function() {
             lookupLists = {
@@ -49,7 +52,8 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
                     core_1.NgModule({
                         imports: [
                             platform_browser_1.BrowserModule,
-                            forms_1.ReactiveFormsModule
+                            forms_1.ReactiveFormsModule,
+                            app_routing_1.routing
                         ],
                         declarations: [
                             app_component_1.AppComponent,

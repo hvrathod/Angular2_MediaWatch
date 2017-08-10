@@ -7,6 +7,8 @@ import { MediaItemComponent } from './media-item.component';
 import { MediaItemListComponent } from './media-item-list.component';
 import { MediaItemFormComponent } from './media-item-form.component';
 import { MediaItemService } from './media-item.service';
+// import {lookupListToken,lookupLists} from './providers';
+import { routing } from './app.routing';
 
 const lookupLists = {
 	mediums: ['Movies','Series']
@@ -15,7 +17,8 @@ const lookupLists = {
 @NgModule({
     imports: [
         BrowserModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        routing
 
     ],
     declarations:[
