@@ -1,5 +1,6 @@
 import { Component, Inject} from '@angular/core';
 import { Validators, FormBuilder} from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { MediaItemService } from './media-item.service';
 
@@ -15,7 +16,8 @@ export class MediaItemFormComponent{
 	constructor(
         private formBuilder: FormBuilder,
         private MediaItemSerivce: MediaItemService,
-        @Inject('lookupListToken') public lookupLists) {}
+        @Inject('lookupListToken') public lookupLists,
+       private router: Router) {}
         
     ngOnInit() {
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -51,5 +53,8 @@ export class MediaItemFormComponent{
     }
     onSubmit(mediaItem){
        this.MediaItemSerivce.add(mediaItem)
+       .subscribe(() => {
+        this.router.navigate(['/', mediaItem.medium]);
+      });
     }
 }

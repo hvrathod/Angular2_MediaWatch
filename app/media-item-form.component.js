@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/forms', './media-item.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/forms', '@angular/router', './media-item.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -13,7 +13,7 @@ System.register(['@angular/core', '@angular/forms', './media-item.service'], fun
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, forms_1, media_item_service_1;
+    var core_1, forms_1, router_1, media_item_service_1;
     var MediaItemFormComponent;
     return {
         setters:[
@@ -23,15 +23,19 @@ System.register(['@angular/core', '@angular/forms', './media-item.service'], fun
             function (forms_1_1) {
                 forms_1 = forms_1_1;
             },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
             function (media_item_service_1_1) {
                 media_item_service_1 = media_item_service_1_1;
             }],
         execute: function() {
             MediaItemFormComponent = (function () {
-                function MediaItemFormComponent(formBuilder, MediaItemSerivce, lookupLists) {
+                function MediaItemFormComponent(formBuilder, MediaItemSerivce, lookupLists, router) {
                     this.formBuilder = formBuilder;
                     this.MediaItemSerivce = MediaItemSerivce;
                     this.lookupLists = lookupLists;
+                    this.router = router;
                 }
                 MediaItemFormComponent.prototype.ngOnInit = function () {
                     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -64,7 +68,11 @@ System.register(['@angular/core', '@angular/forms', './media-item.service'], fun
                     }
                 };
                 MediaItemFormComponent.prototype.onSubmit = function (mediaItem) {
-                    this.MediaItemSerivce.add(mediaItem);
+                    var _this = this;
+                    this.MediaItemSerivce.add(mediaItem)
+                        .subscribe(function () {
+                        _this.router.navigate(['/', mediaItem.medium]);
+                    });
                 };
                 MediaItemFormComponent = __decorate([
                     core_1.Component({
@@ -73,7 +81,7 @@ System.register(['@angular/core', '@angular/forms', './media-item.service'], fun
                         styleUrls: ['app/media-item-form.component.css']
                     }),
                     __param(2, core_1.Inject('lookupListToken')), 
-                    __metadata('design:paramtypes', [forms_1.FormBuilder, media_item_service_1.MediaItemService, Object])
+                    __metadata('design:paramtypes', [forms_1.FormBuilder, media_item_service_1.MediaItemService, Object, router_1.Router])
                 ], MediaItemFormComponent);
                 return MediaItemFormComponent;
             }());

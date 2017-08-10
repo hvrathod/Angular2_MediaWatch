@@ -1,4 +1,4 @@
-System.register(['@angular/core', './media-item.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router', './media-item.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,28 +10,55 @@ System.register(['@angular/core', './media-item.service'], function(exports_1, c
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, media_item_service_1;
+    var core_1, router_1, media_item_service_1;
     var MediaItemListComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
             function (media_item_service_1_1) {
                 media_item_service_1 = media_item_service_1_1;
             }],
         execute: function() {
             MediaItemListComponent = (function () {
-                function MediaItemListComponent(mediaItemService) {
+                function MediaItemListComponent(mediaItemService, activatedRoute) {
                     this.mediaItemService = mediaItemService;
+                    this.activatedRoute = activatedRoute;
+                    this.medium = '';
+                    this.mediaItems = [];
                 }
                 MediaItemListComponent.prototype.ngOnInit = function () {
-                    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-                    //Add 'implements OnInit' to the class.
-                    this.mediaItems = this.mediaItemService.get();
+                    var _this = this;
+                    this.paramsSubscription = this.activatedRoute.params
+                        .subscribe(function (params) {
+                        var medium = params['medium'];
+                        if (medium.toLowerCase() === 'all') {
+                            medium = '';
+                        }
+                        _this.getMediaItems(medium);
+                    });
+                };
+                MediaItemListComponent.prototype.ngOnDestroy = function () {
+                    this.paramsSubscription.unsubscribe();
                 };
                 MediaItemListComponent.prototype.onMediaItemDelete = function (mediaItem) {
-                    this.mediaItemService.delete(mediaItem);
+                    var _this = this;
+                    this.mediaItemService.delete(mediaItem)
+                        .subscribe(function () {
+                        _this.getMediaItems(_this.medium);
+                    });
+                };
+                MediaItemListComponent.prototype.getMediaItems = function (medium) {
+                    var _this = this;
+                    this.medium = medium;
+                    this.mediaItemService.get(medium)
+                        .subscribe(function (mediaItems) {
+                        _this.mediaItems = mediaItems;
+                    });
                 };
                 MediaItemListComponent = __decorate([
                     core_1.Component({
@@ -39,7 +66,7 @@ System.register(['@angular/core', './media-item.service'], function(exports_1, c
                         templateUrl: 'app/media-item-list.component.html',
                         styleUrls: ['app/media-item-list.component.css']
                     }), 
-                    __metadata('design:paramtypes', [media_item_service_1.MediaItemService])
+                    __metadata('design:paramtypes', [media_item_service_1.MediaItemService, router_1.ActivatedRoute])
                 ], MediaItemListComponent);
                 return MediaItemListComponent;
             }());
