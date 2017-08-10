@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/forms'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/forms', './media-item.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/forms'], function(exports_1, context
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, forms_1;
+    var core_1, forms_1, media_item_service_1;
     var MediaItemFormComponent;
     return {
         setters:[
@@ -19,22 +19,27 @@ System.register(['@angular/core', '@angular/forms'], function(exports_1, context
             },
             function (forms_1_1) {
                 forms_1 = forms_1_1;
+            },
+            function (media_item_service_1_1) {
+                media_item_service_1 = media_item_service_1_1;
             }],
         execute: function() {
             MediaItemFormComponent = (function () {
-                function MediaItemFormComponent() {
+                function MediaItemFormComponent(formBuilder, MediaItemSerivce) {
+                    this.formBuilder = formBuilder;
+                    this.MediaItemSerivce = MediaItemSerivce;
                 }
                 MediaItemFormComponent.prototype.ngOnInit = function () {
                     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
                     //Add 'implements OnInit' to the class.
-                    this.form = new forms_1.FormGroup({
-                        medium: new forms_1.FormControl('Movies'),
-                        name: new forms_1.FormControl('', forms_1.Validators.compose([
+                    this.form = this.formBuilder.group({
+                        medium: this.formBuilder.control('Movies'),
+                        name: this.formBuilder.control('', forms_1.Validators.compose([
                             forms_1.Validators.required,
                             forms_1.Validators.pattern('[\\w\\-\\s\\/]+')
                         ])),
-                        category: new forms_1.FormControl(''),
-                        year: new forms_1.FormControl('', this.yearValidator),
+                        category: this.formBuilder.control(''),
+                        year: this.formBuilder.control('', this.yearValidator),
                     });
                 };
                 MediaItemFormComponent.prototype.yearValidator = function (control) {
@@ -55,7 +60,7 @@ System.register(['@angular/core', '@angular/forms'], function(exports_1, context
                     }
                 };
                 MediaItemFormComponent.prototype.onSubmit = function (mediaItem) {
-                    console.log(mediaItem);
+                    this.MediaItemSerivce.add(mediaItem);
                 };
                 MediaItemFormComponent = __decorate([
                     core_1.Component({
@@ -63,7 +68,7 @@ System.register(['@angular/core', '@angular/forms'], function(exports_1, context
                         templateUrl: 'app/media-item-form.component.html',
                         styleUrls: ['app/media-item-form.component.css']
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [forms_1.FormBuilder, media_item_service_1.MediaItemService])
                 ], MediaItemFormComponent);
                 return MediaItemFormComponent;
             }());

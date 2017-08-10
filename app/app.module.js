@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', './app.component', './media-item.component', './media-item-list.component', './media-item-form.component'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', './app.component', './media-item.component', './media-item-list.component', './media-item-form.component', './media-item.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, forms_1, app_component_1, media_item_component_1, media_item_list_component_1, media_item_form_component_1;
-    var AppModule;
+    var core_1, platform_browser_1, forms_1, app_component_1, media_item_component_1, media_item_list_component_1, media_item_form_component_1, media_item_service_1;
+    var lookupLists, AppModule;
     return {
         setters:[
             function (core_1_1) {
@@ -34,8 +34,14 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
             },
             function (media_item_form_component_1_1) {
                 media_item_form_component_1 = media_item_form_component_1_1;
+            },
+            function (media_item_service_1_1) {
+                media_item_service_1 = media_item_service_1_1;
             }],
         execute: function() {
+            lookupLists = {
+                mediums: ['Movies', 'Series']
+            };
             AppModule = (function () {
                 function AppModule() {
                 }
@@ -50,6 +56,10 @@ System.register(['@angular/core', '@angular/platform-browser', '@angular/forms',
                             media_item_component_1.MediaItemComponent,
                             media_item_list_component_1.MediaItemListComponent,
                             media_item_form_component_1.MediaItemFormComponent
+                        ],
+                        providers: [
+                            media_item_service_1.MediaItemService,
+                            { provide: 'lookupListToken', useValue: lookupLists }
                         ],
                         bootstrap: [
                             app_component_1.AppComponent

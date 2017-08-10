@@ -6,6 +6,11 @@ import { AppComponent } from './app.component';
 import { MediaItemComponent } from './media-item.component';
 import { MediaItemListComponent } from './media-item-list.component';
 import { MediaItemFormComponent } from './media-item-form.component';
+import { MediaItemService } from './media-item.service';
+
+const lookupLists = {
+	mediums: ['Movies','Series']
+};
 
 @NgModule({
     imports: [
@@ -19,6 +24,11 @@ import { MediaItemFormComponent } from './media-item-form.component';
         MediaItemListComponent,
         MediaItemFormComponent
         
+    ],
+    providers:[
+		MediaItemService,
+        {provide: 'lookupListToken', useValue: lookupLists}
+
     ],
     bootstrap:[
         AppComponent

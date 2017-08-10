@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 //import { ActivatedRoute } from '@angular/router';
 
-//import { MediaItemService } from 'media-item.service';
+import { MediaItemService } from './media-item.service';
 
 @Component({
   selector: 'mw-media-item-list',
@@ -10,33 +10,19 @@ import { Component } from '@angular/core';
 })
 export class MediaItemListComponent {
 
-    onMediaItemDelete(mediaItem) { }
+	mediaItems;
 
- mediaItems = [{
-        id: 1,
-        name: "Firebug",
-        medium: "Series",
-        category: "Science Fiction",
-        year: 2010,
-        watchedOn: 1294166565384,
-        isFavorite: false
-    },
-    {
-        id: 2,
-        name: "Hoppers",
-        medium: "Series",
-        category: "Drama",
-        year: null,
-        watchedOn: null,
-        isFavorite: true
-    },
-    {
-        id: 3,
-        name: "Happy joe; Cheery Road",
-        medium: "Movies",
-        category: "Action",
-        year: 2015,
-        watchedOn: 1294166565384,
-        isFavorite: false
-    }];
+    constructor(private mediaItemService: MediaItemService){}
+
+    ngOnInit() {
+        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+        //Add 'implements OnInit' to the class.
+        this.mediaItems = this.mediaItemService.get();
+    }
+
+    onMediaItemDelete(mediaItem) { 
+        this.mediaItemService.delete(mediaItem);
+    }
+
+ 	
 }

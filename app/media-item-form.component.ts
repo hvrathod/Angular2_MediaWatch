@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { FormGroup,FormControl, Validators } from '@angular/forms';
+import { Component, Inject} from '@angular/core';
+import { Validators, FormBuilder} from '@angular/forms';
+
+import { MediaItemService } from './media-item.service';
 
 @Component({
     selector: 'mw-media-item-form',
@@ -10,17 +12,21 @@ import { FormGroup,FormControl, Validators } from '@angular/forms';
 export class MediaItemFormComponent{
 	form;
 
+	constructor(
+        private formBuilder: FormBuilder,
+        private MediaItemSerivce: MediaItemService) {}
+        
     ngOnInit() {
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         //Add 'implements OnInit' to the class.
-        this.form = new FormGroup({
-            medium: new FormControl('Movies'),
-            name: new FormControl('',Validators.compose([
+        this.form = this.formBuilder.group({
+            medium: this.formBuilder.control('Movies'),
+            name: this.formBuilder.control('',Validators.compose([
 				Validators.required,
                 Validators.pattern('[\\w\\-\\s\\/]+')
             ])),
-            category: new FormControl(''),
-            year: new FormControl('',this.yearValidator),
+            category: this.formBuilder.control(''),
+            year: this.formBuilder.control('',this.yearValidator),
         })
     }
 
@@ -43,6 +49,6 @@ export class MediaItemFormComponent{
         }
     }
     onSubmit(mediaItem){
-        console.log(mediaItem);
+       this.MediaItemSerivce.add(mediaItem)
     }
 }
