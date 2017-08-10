@@ -34,8 +34,22 @@ System.register(['@angular/core', '@angular/forms'], function(exports_1, context
                             forms_1.Validators.pattern('[\\w\\-\\s\\/]+')
                         ])),
                         category: new forms_1.FormControl(''),
-                        year: new forms_1.FormControl(''),
+                        year: new forms_1.FormControl('', this.yearValidator),
                     });
+                };
+                MediaItemFormComponent.prototype.yearValidator = function (control) {
+                    if (control.value.trim().lenght === 0) {
+                        return null;
+                    }
+                    var year = parseInt(control.value);
+                    var minYear = 1900;
+                    var maxYear = 2100;
+                    if (year >= minYear && year <= maxYear) {
+                        return null;
+                    }
+                    else {
+                        return { 'year': true };
+                    }
                 };
                 MediaItemFormComponent.prototype.onSubmit = function (mediaItem) {
                     console.log(mediaItem);
