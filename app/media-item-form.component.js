@@ -10,6 +10,9 @@ System.register(['@angular/core', '@angular/forms', './media-item.service'], fun
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
+    var __param = (this && this.__param) || function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
     var core_1, forms_1, media_item_service_1;
     var MediaItemFormComponent;
     return {
@@ -25,9 +28,10 @@ System.register(['@angular/core', '@angular/forms', './media-item.service'], fun
             }],
         execute: function() {
             MediaItemFormComponent = (function () {
-                function MediaItemFormComponent(formBuilder, MediaItemSerivce) {
+                function MediaItemFormComponent(formBuilder, MediaItemSerivce, lookupLists) {
                     this.formBuilder = formBuilder;
                     this.MediaItemSerivce = MediaItemSerivce;
+                    this.lookupLists = lookupLists;
                 }
                 MediaItemFormComponent.prototype.ngOnInit = function () {
                     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -67,8 +71,9 @@ System.register(['@angular/core', '@angular/forms', './media-item.service'], fun
                         selector: 'mw-media-item-form',
                         templateUrl: 'app/media-item-form.component.html',
                         styleUrls: ['app/media-item-form.component.css']
-                    }), 
-                    __metadata('design:paramtypes', [forms_1.FormBuilder, media_item_service_1.MediaItemService])
+                    }),
+                    __param(2, core_1.Inject('lookupListToken')), 
+                    __metadata('design:paramtypes', [forms_1.FormBuilder, media_item_service_1.MediaItemService, Object])
                 ], MediaItemFormComponent);
                 return MediaItemFormComponent;
             }());
