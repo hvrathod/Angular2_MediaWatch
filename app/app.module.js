@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/platform-browser', './app.component', './media-item.component', './media-item-list.component'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/platform-browser', '@angular/forms', './app.component', './media-item.component', './media-item-list.component', './media-item-form.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/platform-browser', './app.component'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, app_component_1, media_item_component_1, media_item_list_component_1;
+    var core_1, platform_browser_1, forms_1, app_component_1, media_item_component_1, media_item_list_component_1, media_item_form_component_1;
     var AppModule;
     return {
         setters:[
@@ -20,6 +20,9 @@ System.register(['@angular/core', '@angular/platform-browser', './app.component'
             function (platform_browser_1_1) {
                 platform_browser_1 = platform_browser_1_1;
             },
+            function (forms_1_1) {
+                forms_1 = forms_1_1;
+            },
             function (app_component_1_1) {
                 app_component_1 = app_component_1_1;
             },
@@ -28,6 +31,9 @@ System.register(['@angular/core', '@angular/platform-browser', './app.component'
             },
             function (media_item_list_component_1_1) {
                 media_item_list_component_1 = media_item_list_component_1_1;
+            },
+            function (media_item_form_component_1_1) {
+                media_item_form_component_1 = media_item_form_component_1_1;
             }],
         execute: function() {
             AppModule = (function () {
@@ -36,12 +42,14 @@ System.register(['@angular/core', '@angular/platform-browser', './app.component'
                 AppModule = __decorate([
                     core_1.NgModule({
                         imports: [
-                            platform_browser_1.BrowserModule
+                            platform_browser_1.BrowserModule,
+                            forms_1.FormsModule
                         ],
                         declarations: [
                             app_component_1.AppComponent,
                             media_item_component_1.MediaItemComponent,
-                            media_item_list_component_1.MediaItemListComponent
+                            media_item_list_component_1.MediaItemListComponent,
+                            media_item_form_component_1.MediaItemFormComponent
                         ],
                         bootstrap: [
                             app_component_1.AppComponent

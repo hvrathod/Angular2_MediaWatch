@@ -11,31 +11,31 @@ System.register(['@angular/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var FavoriteDirective;
+    var MediaItemFormComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            FavoriteDirective = (function () {
-                function FavoriteDirective() {
-                    this.isFavorite = true;
+            MediaItemFormComponent = (function () {
+                function MediaItemFormComponent() {
                 }
-                __decorate([
-                    core_1.HostBinding('class.is-favorite'), 
-                    __metadata('design:type', Object)
-                ], FavoriteDirective.prototype, "isFavorite", void 0);
-                FavoriteDirective = __decorate([
-                    core_1.Directive({
-                        selector: '[mwFavorite]'
+                MediaItemFormComponent.prototype.onSubmit = function (mediaItem) {
+                    console.log(mediaItem);
+                };
+                MediaItemFormComponent = __decorate([
+                    core_1.Component({
+                        selector: 'mw-media-item-form',
+                        templateUrl: 'app/media-item-form.component.html',
+                        styleUrls: ['app/media-item-form.component.css']
                     }), 
                     __metadata('design:paramtypes', [])
-                ], FavoriteDirective);
-                return FavoriteDirective;
+                ], MediaItemFormComponent);
+                return MediaItemFormComponent;
             }());
-            exports_1("FavoriteDirective", FavoriteDirective);
+            exports_1("MediaItemFormComponent", MediaItemFormComponent);
         }
     }
 });
-//# sourceMappingURL=favorite.directive.js.map
+//# sourceMappingURL=media-item-form.component.js.map

@@ -1,1 +1,1 @@
-{"version":3,"file":"favorite.directive.js","sourceRoot":"","sources":["favorite.directive.ts"],"names":[],"mappings":""}
+{"version":3,"file":"favorite.directive.js","sourceRoot":"","sources":["favorite.directive.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;YAMA;gBAAA;oBACsC,eAAU,GAAG,IAAI,CAAC;gBACxD,CAAC;gBADG;oBAAC,kBAAW,CAAC,mBAAmB,CAAC;;qEAAA;gBALrC;oBAAC,gBAAS,CAAC;wBACP,QAAQ,EAAE,cAAc;qBAC3B,CAAC;;qCAAA;gBAIF,wBAAC;YAAD,CAAC,AAFD,IAEC;YAFD,iDAEC,CAAA"}
