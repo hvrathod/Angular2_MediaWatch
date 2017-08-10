@@ -42,13 +42,16 @@ System.register(['@angular/core', '@angular/forms'], function(exports_1, context
                         return null;
                     }
                     var year = parseInt(control.value);
-                    var minYear = 1900;
-                    var maxYear = 2100;
+                    var minYear = 1800;
+                    var maxYear = 2500;
                     if (year >= minYear && year <= maxYear) {
                         return null;
                     }
                     else {
-                        return { 'year': true };
+                        return { 'year': {
+                                min: minYear,
+                                max: maxYear
+                            } };
                     }
                 };
                 MediaItemFormComponent.prototype.onSubmit = function (mediaItem) {
